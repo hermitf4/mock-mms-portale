@@ -12,6 +12,10 @@ export class AuthService {
     return localStorage.getItem( Constants.jwtHeader ) !== null && localStorage.getItem( Constants.jwtHeader ) !== '';
   }
 
+  getToken() {
+    return localStorage.getItem(Constants.jwtHeader);
+  }
+
   setToken(authentication: any) {
     if (authentication.token) {
       localStorage.setItem(Constants.jwtHeader, authentication.token);

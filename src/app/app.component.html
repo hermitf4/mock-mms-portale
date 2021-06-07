@@ -1,11 +1,6 @@
-<div class="container-fluid">
-  <div class="col-md-offset-1 text-center font-monospace">
-    <h1>
-      Welcome to {{title}}!
-    </h1>
-
+  <app-header title="{{title}}"></app-header>
+  <div class="container my-4 ">
+    <div>
+      <app-user [isAuth]="isAuth"></app-user>
+    </div>
   </div>
-  <div >
-    <app-user ></app-user>
-  </div>
-</div>
