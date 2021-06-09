@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {finalize, map} from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {UserResponseDTO, UsersService} from '../../core/api/be';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +14,7 @@ export class UserComponent implements OnInit, OnChanges {
   userLoaded: boolean = false;
   @Input() isAuth = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private usersService: UsersService) {
 
   }
 
@@ -23,11 +23,12 @@ export class UserComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.isAuth) {
-      this.http.get('https://reqres.in/api/users?').pipe(map((res: any) => {
-        return res.data;
+      this.usersService.getUsers()
+        .pipe(map((res: UserResponseDTO[]) => {
+        return res;
       }), finalize(() => this.userLoaded = true))
-        .subscribe( data => {
-          this.users = data ? data : [];
+        .subscribe( users => {
+          this.users = users ? users : [];
         });
     }
   }

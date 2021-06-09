@@ -10,6 +10,7 @@ import {HttpInterInterceptor} from './interceptors/http-inter.interceptor';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {HeaderComponent} from './components/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
+import {AuthenticationService, Configuration, TestServiceService, UsersService} from './core/api/be';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,21 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true},
+    AuthenticationService, UsersService,
+    {provide: Configuration, useFactory: getConfig, multi: false}
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+/**
+ * ApiKeys for Swagger Configuration
+ */
+export function getConfig() {
+  return new Configuration({
+    apiKeys: {'X-auth': '123'}
+  });
+}
 

@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     // window.location.reload();
-    const urlToRedirect = window.location.origin + Constants.FEDERA_LOGOUT_URL;
-    window.location.href = urlToRedirect;
+    //const urlToRedirect = window.location.origin + Constants.FEDERA_LOGOUT_URL;
+    //window.location.href = urlToRedirect;
   }
 
 }
