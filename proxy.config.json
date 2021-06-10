@@ -1,6 +1,6 @@
 {
-  "/Servizi/api/*": {
-    "target": "http://localhost:8080",
+  "/mock-mms-api/**": {
+    "target": "http://localhost:8090",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

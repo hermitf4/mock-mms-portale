@@ -10,7 +10,8 @@ import {HttpInterInterceptor} from './interceptors/http-inter.interceptor';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {HeaderComponent} from './components/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
-import {AuthenticationService, Configuration, TestServiceService, UsersService} from './core/api/be';
+import {AuthenticationService, BASE_PATH, Configuration, UsersService} from './core/api/be';
+import {Constants} from './models/constants';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {AuthenticationService, Configuration, TestServiceService, UsersService} 
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true},
     AuthenticationService, UsersService,
+    {provide: BASE_PATH, useValue: Constants.API_URL},
     {provide: Configuration, useFactory: getConfig, multi: false}
   ],
   bootstrap: [AppComponent]
