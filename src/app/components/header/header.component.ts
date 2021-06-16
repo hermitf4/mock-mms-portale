@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Constants} from '../../models/constants';
+import {AppService} from '../../services/app.service';
 
 @Component({
   selector: 'app-header',
@@ -9,17 +10,14 @@ import {Constants} from '../../models/constants';
 export class HeaderComponent implements OnInit {
   @Input() title: string = '';
 
-  constructor() {
+  constructor(private appService: AppService) {
   }
 
   ngOnInit(): void {
   }
 
   logout() {
-    localStorage.clear();
-    // window.location.reload();
-    //const urlToRedirect = window.location.origin + Constants.FEDERA_LOGOUT_URL;
-    //window.location.href = urlToRedirect;
+    this.appService.externalLogoutRedirect();
   }
 
 }

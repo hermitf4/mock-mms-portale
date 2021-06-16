@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Constants} from '../models/constants';
 
@@ -7,7 +7,8 @@ import {Constants} from '../models/constants';
 })
 export class AppService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
 
   externalLoginRedirect() {
@@ -20,14 +21,16 @@ export class AppService {
   }
 
   _ciamLoginRedirect() {
-    const currentApp = 'USER';
-    const urlToRedirect = window.location.origin + Constants.FEDERA_LOGIN_URL + currentApp.toUpperCase();
+    const currentApp = 'mms';
+    const urlToRedirect = //window.location.origin
+      Constants.BASE_URL_LOCALHOST + Constants.FEDERA_LOGIN_URL + currentApp;
     window.location.href = urlToRedirect;
   }
 
 
   _ciamLogoutRedirect() {
-    const urlToRedirect = window.location.origin + Constants.FEDERA_LOGOUT_URL;
+    const urlToRedirect = // window.location.origin
+      Constants.BASE_URL_LOCALHOST + Constants.FEDERA_LOGOUT_URL;
     window.location.href = urlToRedirect;
   }
 
@@ -37,7 +40,6 @@ export class AppService {
   }
 
   errorPageRedirect() {
-    this.router.navigate(['access-denied']);
   }
 
 

@@ -12,13 +12,16 @@ import {HeaderComponent} from './components/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthenticationService, BASE_PATH, Configuration, UsersService} from './core/api/be';
 import {Constants} from './models/constants';
+import { DialogComponent } from './components/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import {Constants} from './models/constants';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true},

@@ -29,7 +29,7 @@ new Promise((resolve, reject) => {
 
   return Promise.all([
       new Promise((resolve, reject) => {
-        exec(`java -jar "${basePath}/config/swagger/swagger-codegen-cli-2.4.17.jar" generate -i http://localhost:8090/v2/api-docs -l typescript-angular -o ${folderApi} --additional-properties ngVersion=12.0.0`,
+        exec(`java -jar "${basePath}/config/swagger/swagger-codegen-cli-2.4.17.jar" generate -i http://localhost:8090/mock-mms-api/v2/api-docs -l typescript-angular -o ${folderApi} --additional-properties ngVersion=12.0.0`,
           (error, stdout) => {
             if (error !== null) {
               reject(error);
