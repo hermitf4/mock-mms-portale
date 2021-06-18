@@ -17,7 +17,7 @@ import {AppService} from '../services/app.service';
 @Injectable()
 export class HttpInterInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService, public dialog: MatDialog, private appService: AppService) {}
+  constructor(private auth: AuthService, public dialog: MatDialog, private appService: AppService, private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(this._addTokenToRequest(request, this.auth.getToken())).pipe(
@@ -26,14 +26,14 @@ export class HttpInterInterceptor implements HttpInterceptor {
           this._handleTokenExpired(err);
         }
         return throwError(err);
-      }));;
+      }));
   }
 
   _addTokenToRequest(request: HttpRequest<any>, token: string | null): HttpRequest<any> {
     if (token) {
       return request.clone({
         setHeaders: {
-          [Constants.jwtHeader]: 'Bearer ' + token
+          [Constants.JWTHEADER]: 'Bearer ' + token
         }
       });
     } else {
@@ -49,10 +49,11 @@ export class HttpInterInterceptor implements HttpInterceptor {
   }
 
   _handleTokenExpired(resp: HttpErrorResponse) {
+    this.appService.cleanLS();
     const dialogRef = this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: 'Token non valido'}});
 
     dialogRef.afterClosed().subscribe(result => {
-      this.appService.externalLogoutRedirect();
+      this.authService.checkAuth();
     });
 
   }

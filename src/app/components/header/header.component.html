@@ -1,12 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-custom">
+<nav class="navbar navbar-expand-lg navbar-light bg-custom color-text-primary">
   <div class="container ps-3 pe-3">
-    <span > Welcome to {{title}} </span>
-    <div class="navbar-collapse" id="navbarText">
+   <div><span class="fw-bold"> Welcome to {{title }} </span> </div>
+    <div>
       <ul class="navbar-nav me-auto">
         <li class="nav-item"></li>
       </ul>
       <span class="float-end">
-        <span  class="cursor-pointer" title="LOGOUT" (click)="logout()"><mat-icon>logout</mat-icon></span>
+        <div class="row" *ngIf="user.isLogged">
+          <div class="col-auto">
+            <span> User: <i class="fw-bold"> {{user.username}} </i></span>
+          </div>
+          <div class="col-auto">
+          <span class="cursor-pointer" matTooltip="LOGOUT" (click)="logout()"><mat-icon>logout</mat-icon></span>
+         </div>
+        </div>
       </span>
     </div>
   </div>

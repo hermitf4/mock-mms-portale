@@ -10,10 +10,11 @@
  * Do not edit the class manually.
  */
 import { ResponseBaseDTO } from './responseBaseDTO';
+import { UserAuthResponseDTO } from './userAuthResponseDTO';
 
 
 /**
- * This is token
+ * This authentication user
  */
 export interface AuthenticationResponseDTO extends ResponseBaseDTO { 
     /**
@@ -28,14 +29,11 @@ export interface AuthenticationResponseDTO extends ResponseBaseDTO {
      * Codice realtivo al risultato, se 0 success altrimenti ≠ 0
      */
     resultCode: number;
+    schema?: UserAuthResponseDTO;
     /**
      * Indica se l'operazione è andata a buon fine
      */
     success: boolean;
-    /**
-     * This is authentication token
-     */
-    token?: string;
     /**
      * transaction identification
      */

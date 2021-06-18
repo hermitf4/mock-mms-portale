@@ -1,17 +1,14 @@
-.pl-3 {
-  padding-left: 6px !important;
-}
+@import 'variables';
 
 .bg-custom {
-  background-color: #e3f2fd;
+  background-color: $color-primary;
 }
 
 .cursor-pointer {
   cursor: pointer;
 }
 
-ul#navbarText {
-  list-style-type: none;
+.username {
+  font-weight: bold;
 }
-
 

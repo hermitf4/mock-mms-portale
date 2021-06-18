@@ -28,7 +28,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersService {
 
-    protected basePath = 'https://localhost:8090';
+    protected basePath = 'https://localhost:8090/mock-mms-api';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

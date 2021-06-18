@@ -4,7 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserComponent} from './components/user/user.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpInterInterceptor} from './interceptors/http-inter.interceptor';
 import {NotFoundComponent} from './components/not-found/not-found.component';
@@ -12,8 +12,16 @@ import {HeaderComponent} from './components/header/header.component';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthenticationService, BASE_PATH, Configuration, UsersService} from './core/api/be';
 import {Constants} from './models/constants';
-import { DialogComponent } from './components/dialog/dialog.component';
+import {DialogComponent} from './components/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {LoginComponent} from './components/login/login.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import { HomeComponent } from './components/home/home.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +29,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     UserComponent,
     NotFoundComponent,
     HeaderComponent,
-    DialogComponent
+    DialogComponent,
+    LoginComponent,
+    HomeComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +41,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     FormsModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true},

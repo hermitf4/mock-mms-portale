@@ -1,46 +1,70 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {Constants} from '../models/constants';
+import {BehaviorSubject} from 'rxjs';
+import {UserInfo} from '../models/UserInfo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class AppService implements OnDestroy{
+
+  public isLoggedChanged: BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>({isLogged: false});
+
+  public loadUsers: BehaviorSubject<any> = new BehaviorSubject<any>(false);
 
   constructor(private router: Router) {
   }
 
-
   externalLoginRedirect() {
-    this._ciamLoginRedirect();
+    this.federaLoginRedirect();
+  }
+
+  federaLoginRedirect() {
+    const urlToRedirect = //window.location.origin
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + Constants.APP;
+    window.location.href = urlToRedirect;
+  }
+
+  logoutPageRedirect() {
+    this.cleanLS();
+    this.navigateToPage('');
   }
 
   externalLogoutRedirect() {
-    localStorage.clear();
-    this._ciamLogoutRedirect();
+    this.cleanLS();
+    this.federaLogoutRedirect();
   }
 
-  _ciamLoginRedirect() {
-    const currentApp = 'mms';
-    const urlToRedirect = //window.location.origin
-      Constants.BASE_URL_LOCALHOST + Constants.FEDERA_LOGIN_URL + currentApp;
-    window.location.href = urlToRedirect;
-  }
-
-
-  _ciamLogoutRedirect() {
+  federaLogoutRedirect() {
     const urlToRedirect = // window.location.origin
-      Constants.BASE_URL_LOCALHOST + Constants.FEDERA_LOGOUT_URL;
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL;
     window.location.href = urlToRedirect;
   }
 
-  ciamErrorPageRedirect() {
-    const urlToRedirect = window.location.origin;
+  federaErrorPageRedirect() {
+    const urlToRedirect = Constants.BASE_URL_FEDERA;// window.location.origin;
     window.location.href = urlToRedirect;
   }
 
   errorPageRedirect() {
+    this.navigateToPage('access-denied');
   }
 
+  navigateToPage(page: string) {
+    this.router.navigate([page]);
+    if (page === 'users') {
+      this.loadUsers.next(true);
+    }
+  }
+
+  cleanLS() {
+    localStorage.clear();
+  }
+
+  ngOnDestroy(): void {
+    // this.isLoggedChanged.unsubscribe();
+    // this.loadUsers.unsubscribe();
+  }
 
 }
