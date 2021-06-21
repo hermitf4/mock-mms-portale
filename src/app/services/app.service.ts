@@ -3,15 +3,14 @@ import {Router} from '@angular/router';
 import {Constants} from '../models/constants';
 import {BehaviorSubject} from 'rxjs';
 import {UserInfo} from '../models/UserInfo';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService implements OnDestroy{
+export class AppService {
 
   public isLoggedChanged: BehaviorSubject<UserInfo> = new BehaviorSubject<UserInfo>({isLogged: false});
-
-  public loadUsers: BehaviorSubject<any> = new BehaviorSubject<any>(false);
 
   constructor(private router: Router) {
   }
@@ -22,7 +21,7 @@ export class AppService implements OnDestroy{
 
   federaLoginRedirect() {
     const urlToRedirect = //window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + Constants.APP;
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + environment.idApp;
     window.location.href = urlToRedirect;
   }
 
@@ -53,18 +52,11 @@ export class AppService implements OnDestroy{
 
   navigateToPage(page: string) {
     this.router.navigate([page]);
-    if (page === 'users') {
-      this.loadUsers.next(true);
-    }
   }
 
   cleanLS() {
     localStorage.clear();
   }
 
-  ngOnDestroy(): void {
-    // this.isLoggedChanged.unsubscribe();
-    // this.loadUsers.unsubscribe();
-  }
 
 }

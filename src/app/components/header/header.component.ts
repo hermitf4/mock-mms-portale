@@ -10,7 +10,7 @@ import {UserInfo} from '../../models/UserInfo';
 })
 export class HeaderComponent implements OnInit{
 
-  @Input() title: string = '';
+  @Input() title = '';
   user: any = {
     isLogged: false,
     username: ''

@@ -63,7 +63,7 @@ export class AppModule { }
 /**
  * ApiKeys for Swagger Configuration
  */
-export function getConfig() {
+export function getConfig(): Configuration {
   return new Configuration({
     apiKeys: {'X-auth': '123'}
   });

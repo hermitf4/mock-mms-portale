@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginForm.reset();
   }
 
-  login() {
+  login(): void {
      const username = this.loginForm.controls['username'].value;
      const password = this.loginForm.controls['password'].value;
      this.authService.authLDAP(username, password);
   }
 
-  federa() {
+  federa(): void {
       this.appService.externalLoginRedirect();
   }
 }
