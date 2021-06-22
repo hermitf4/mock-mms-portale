@@ -17,6 +17,14 @@ export interface UserAuthResponseDTO {
      */
     codiceFiscale?: string;
     /**
+     * This is the last name of user
+     */
+    cognome?: string;
+    /**
+     * This is the name of user
+     */
+    nome?: string;
+    /**
      * This is authentication token
      */
     token?: string;

@@ -17,7 +17,8 @@ export class AuthService {
   checkAuth() {
     if (this.isLoggedIn()) {
       //nav verso le pagine di competenza. Le pagine saranno diverse a seconda del profilo utente
-      this.appService.isLoggedChanged.next({isLogged: true, username: this.getUsername()});
+
+      this.appService.isLoggedChanged.next({isLogged: true, user: this.getUserInfo()});
       this.appService.navigateToPage('users');
     } else {
       this._authFedera();
@@ -49,10 +50,14 @@ export class AuthService {
   _setUserInfoAndRedirect(userInfo: UserAuthResponseDTO | undefined) {
     if (userInfo) {
       const token: string|undefined = userInfo.token;
-      const username: string|undefined = userInfo.codiceFiscale;
+      const user: any = {
+        username: userInfo.codiceFiscale,
+        firstname: userInfo.nome,
+        lastname: userInfo.cognome
+      };
       this.setToken(token);
-      this.setUsername(username);
-      this.appService.isLoggedChanged.next({isLogged: true, username: userInfo.codiceFiscale});
+      this.setUserInfo(user);
+      this.appService.isLoggedChanged.next({isLogged: true, user: user});
       this.appService.navigateToPage('users');
     }
   }
@@ -71,20 +76,20 @@ export class AuthService {
     }
   }
 
-  getUsername(): string | null {
-    return localStorage.getItem(Constants.USERNAME) !== null ? localStorage.getItem(Constants.USERNAME) : '';
+  getUserInfo(): any {
+    return localStorage.getItem(Constants.USER) !== null ? JSON.parse(<string>localStorage.getItem(Constants.USER)) : {};
   }
 
-  setUsername(username: string | undefined) {
-    if(username) {
-      localStorage.setItem(Constants.USERNAME, username);
+  setUserInfo(user: any) {
+    if(user) {
+      localStorage.setItem(Constants.USER, JSON.stringify(user));
     }
   }
 
   logout() {
     this.authenticationService.logout().subscribe((resp: ResponseBaseDTO) => {
       this.appService.cleanLS();
-      this.appService.isLoggedChanged.next({isLogged:false, username:''});
+      this.appService.isLoggedChanged.next({isLogged:false, user: {}});
       switch (resp.resultCode) {
         case Constants.CODE_LOGOUT_LDAP:
           this.appService.navigateToPage('login');

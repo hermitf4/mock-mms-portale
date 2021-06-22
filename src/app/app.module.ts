@@ -20,8 +20,8 @@ import {LoginComponent} from './components/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
-import { HomeComponent } from './components/home/home.component';
-import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import {HomeComponent} from './components/home/home.component';
+import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [

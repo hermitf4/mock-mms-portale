@@ -1,20 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-custom color-text-primary">
   <div class="container ps-3 pe-3">
-   <div><span class="fw-bold"> Welcome to {{title }} </span> </div>
-    <div>
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"></li>
-      </ul>
-      <span class="float-end">
-        <div class="row" *ngIf="user.isLogged">
-          <div class="col-auto">
-            <span> User: <i class="fw-bold"> {{user.username}} </i></span>
-          </div>
-          <div class="col-auto">
-          <span class="cursor-pointer" matTooltip="LOGOUT" (click)="logout()"><mat-icon>logout</mat-icon></span>
-         </div>
+    <div><span class="fw-bold"> Welcome to {{title }} </span></div>
+    <div class="float-end">
+      <div class="row" *ngIf="user.isLogged">
+        <div class="col-auto">
+          <span class="curstor-context-menu" matTooltip="{{userInfoArray.join('\n')}}">
+            <mat-icon aria-hidden="false" aria-label="User Icon">account_circle</mat-icon>
+          </span>
         </div>
-      </span>
+        <div class="col-auto">
+          <span class="cursor-pointer" matTooltip="LOGOUT" (click)="logout()">
+            <mat-icon aria-hidden="false" aria-label="Logout Icon">logout</mat-icon>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

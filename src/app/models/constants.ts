@@ -1,6 +1,6 @@
 export enum Constants {
   TITLE_APP = 'User App',
-  USERNAME = 'username',
+  USER = 'user',
   JWTHEADER = 'X-auth',
   API_URL= '/mock-mms-api',
   TOKEN_NOT_FOUND_CODE_ERR = 401001,

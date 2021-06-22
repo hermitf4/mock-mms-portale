@@ -1,4 +1,8 @@
 export class UserInfo {
   isLogged?: boolean;
-  username?: string | null
+  user?: any = {
+    username: '',
+    firstname: '',
+    lastname: ''
+  };
 }
