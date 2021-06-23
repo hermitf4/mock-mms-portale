@@ -37,7 +37,7 @@ export class AppService {
 
   federaLogoutRedirect() {
     const urlToRedirect = // window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL;
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL + environment.idApp;
     window.location.href = urlToRedirect;
   }
 

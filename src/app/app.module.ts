@@ -22,6 +22,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {HomeComponent} from './components/home/home.component';
 import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {AccessDeniedComponent} from './components/access-denied/access-denied.co
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterInterceptor, multi: true},
     AuthenticationService, UsersService,
     {provide: BASE_PATH, useValue: Constants.API_URL},
-    {provide: Configuration, useFactory: getConfig, multi: false}
+    {provide: Configuration, useFactory: getConfig, multi: false},
+     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
