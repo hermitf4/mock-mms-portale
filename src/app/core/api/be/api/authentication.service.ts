@@ -84,7 +84,7 @@ export class AuthenticationService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<AuthenticationResponseDTO>(`${this.basePath}/getAuthenticationFedera`,
+        return this.httpClient.get<AuthenticationResponseDTO>(`${this.basePath}/getAuthentication`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -127,7 +127,7 @@ export class AuthenticationService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<AuthenticationResponseDTO>(`${this.basePath}/getAuthenticationLDAP`,
+        return this.httpClient.post<AuthenticationResponseDTO>(`${this.basePath}/loginLDAP`,
             request,
             {
                 withCredentials: this.configuration.withCredentials,

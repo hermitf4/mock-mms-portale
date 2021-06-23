@@ -8,8 +8,7 @@ import {AccessDeniedComponent} from './components/access-denied/access-denied.co
 import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: '/users', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'users', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'access-denied', component: AccessDeniedComponent},
