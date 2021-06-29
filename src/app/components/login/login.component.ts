@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {AppService} from '../../services/app.service';
 import {AuthenticationService} from '../../core/api/be';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
               private appService: AppService,
               private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
-      username: [''], password: ['']
+      username: ['', Validators.required], password: ['',  Validators.required]
     });
   }
 

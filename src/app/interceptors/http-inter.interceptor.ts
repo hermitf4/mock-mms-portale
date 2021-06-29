@@ -45,7 +45,8 @@ export class HttpInterInterceptor implements HttpInterceptor {
   _isApiError(err: HttpErrorResponse) {
     return err instanceof HttpErrorResponse &&
       err.status === HttpConstants.notAuthorized &&
-      err.error.resultCode !== Constants.TOKEN_NOT_FOUND_CODE_ERR;
+      err.error.resultCode !== Constants.TOKEN_NOT_FOUND_CODE_ERR &&
+      err.error.resultCode !== Constants.BAD_CREDENTIALS_EXCEPTION;
   }
 
   _handleTokenExpired(resp: HttpErrorResponse) {

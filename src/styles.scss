@@ -10,8 +10,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: none;
 }
 
-.color-text-primary {
+.color-text-light {
   color: $color-text-primary!important;
+}
+
+.color-text-primary {
+  color: $color-primary;
 }
 
 .mat-tooltip {

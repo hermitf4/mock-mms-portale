@@ -5,13 +5,15 @@ import {AuthenticationResponseDTO, AuthenticationService, ResponseBaseDTO, UserA
 import {HttpErrorResponse} from '@angular/common/http';
 import {HttpConstants} from '../models/http-constants';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from '../components/dialog/dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private appService: AppService, private router: Router,
+  constructor(private appService: AppService, private router: Router, public dialog: MatDialog,
               private authenticationService: AuthenticationService){ }
 
   checkAuth() {
@@ -26,7 +28,7 @@ export class AuthService {
   }
 
   _authFedera() {
-    this.authenticationService.getAuthenticationFedera()
+    this.authenticationService.getAuthentication()
       .subscribe((data: AuthenticationResponseDTO) => {
         this._setUserInfoAndRedirect(data.schema);
       }, (err: HttpErrorResponse) => {
@@ -39,11 +41,13 @@ export class AuthService {
   }
 
   authLDAP(username: string, password: string) {
-    this.authenticationService.getAuthenticationLDAP( {
+    this.authenticationService.loginLDAP( {
       username,
       password
     }).subscribe((res: AuthenticationResponseDTO) => {
       this._setUserInfoAndRedirect(res.schema);
+    }, (err: any) => {
+      const dialogRef = this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: 'Utente non trovato'}});
     })
   }
 

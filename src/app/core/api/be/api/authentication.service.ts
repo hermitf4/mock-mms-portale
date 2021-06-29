@@ -64,10 +64,10 @@ export class AuthenticationService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAuthenticationFedera(observe?: 'body', reportProgress?: boolean): Observable<AuthenticationResponseDTO>;
-    public getAuthenticationFedera(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AuthenticationResponseDTO>>;
-    public getAuthenticationFedera(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AuthenticationResponseDTO>>;
-    public getAuthenticationFedera(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public getAuthentication(observe?: 'body', reportProgress?: boolean): Observable<AuthenticationResponseDTO>;
+    public getAuthentication(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AuthenticationResponseDTO>>;
+    public getAuthentication(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AuthenticationResponseDTO>>;
+    public getAuthentication(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -101,10 +101,10 @@ export class AuthenticationService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getAuthenticationLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'body', reportProgress?: boolean): Observable<AuthenticationResponseDTO>;
-    public getAuthenticationLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AuthenticationResponseDTO>>;
-    public getAuthenticationLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AuthenticationResponseDTO>>;
-    public getAuthenticationLDAP(request?: RequestUserLoginLDAPDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public loginLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'body', reportProgress?: boolean): Observable<AuthenticationResponseDTO>;
+    public loginLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AuthenticationResponseDTO>>;
+    public loginLDAP(request?: RequestUserLoginLDAPDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AuthenticationResponseDTO>>;
+    public loginLDAP(request?: RequestUserLoginLDAPDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let headers = this.defaultHeaders;

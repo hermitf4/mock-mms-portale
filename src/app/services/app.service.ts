@@ -21,7 +21,7 @@ export class AppService {
 
   federaLoginRedirect() {
     const urlToRedirect = //window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + environment.idApp;
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
     window.location.href = urlToRedirect;
   }
 
@@ -37,7 +37,7 @@ export class AppService {
 
   federaLogoutRedirect() {
     const urlToRedirect = // window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL + environment.idApp;
+      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
     window.location.href = urlToRedirect;
   }
 
