@@ -23,11 +23,11 @@ export class AuthService {
       this.appService.isLoggedChanged.next({isLogged: true, user: this.getUserInfo()});
       this.appService.navigateToPage('users');
     } else {
-      this._authFedera();
+      this._verifyAuthentication();
     }
   }
 
-  _authFedera() {
+  _verifyAuthentication() {
     this.authenticationService.getAuthentication()
       .subscribe((data: AuthenticationResponseDTO) => {
         this._setUserInfoAndRedirect(data.schema);
@@ -35,12 +35,12 @@ export class AuthService {
         if (err.status === HttpConstants.notAuthorized && err.error.resultCode === Constants.TOKEN_NOT_FOUND_CODE_ERR) {
           this.appService.navigateToPage('login');
         } else {
-          this.appService.federaErrorPageRedirect();
+          this.appService.errorPageRedirect();
         }
       });
   }
 
-  authLDAP(username: string, password: string) {
+  loginLDAP(username: string, password: string) {
     this.authenticationService.loginLDAP( {
       username,
       password

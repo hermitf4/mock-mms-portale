@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-custom color-text-light">
   <div class="container ps-3 pe-3">
-    <div><span class="fw-bold"> Welcome to {{title }} </span></div>
+    <div><span class="fw-bold"> {{title | uppercase}} </span></div>
     <div class="float-end">
       <div class="row" *ngIf="user.isLogged">
         <div class="col-auto">

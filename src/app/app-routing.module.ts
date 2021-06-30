@@ -6,10 +6,11 @@ import {UserComponent} from './components/user/user.component';
 import {HomeComponent} from './components/home/home.component';
 import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
 import {AuthGuard} from './guards/auth.guard';
+import {LoginGuard} from './guards/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/users', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'users', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'access-denied', component: AccessDeniedComponent},
   {path: '**', component: NotFoundComponent}

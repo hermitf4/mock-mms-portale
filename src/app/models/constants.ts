@@ -1,5 +1,5 @@
 export enum Constants {
-  TITLE_APP = 'User App',
+  TITLE_APP = 'MMS App',
   USER = 'user',
   JWTHEADER = 'X-auth',
   API_URL= '/mock-mms-api',

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login(): void {
      const username = this.loginForm.controls['username'].value;
      const password = this.loginForm.controls['password'].value;
-     this.authService.authLDAP(username, password);
+     this.authService.loginLDAP(username, password);
   }
 
   federa(): void {

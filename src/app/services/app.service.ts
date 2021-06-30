@@ -41,11 +41,6 @@ export class AppService {
     window.location.href = urlToRedirect;
   }
 
-  federaErrorPageRedirect() {
-    const urlToRedirect = Constants.BASE_URL_FEDERA;// window.location.origin;
-    window.location.href = urlToRedirect;
-  }
-
   errorPageRedirect() {
     this.navigateToPage('access-denied');
   }

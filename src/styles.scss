@@ -22,4 +22,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   white-space: pre-line;
 }
 
+.center-content-v {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-height {
+  height: 300px;
+}
+
+.content-height {
+  height: 100px;
+}
+
 
