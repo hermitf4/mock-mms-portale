@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.appService.cleanLS();
     this.appService.isLoggedChanged.next({isLogged: false});
   }
 

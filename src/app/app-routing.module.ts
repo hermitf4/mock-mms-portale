@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {LoginComponent} from './components/login/login.component';
 import {UserComponent} from './components/user/user.component';
-import {HomeComponent} from './components/home/home.component';
 import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
 import {AuthGuard} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
