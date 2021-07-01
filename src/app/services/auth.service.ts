@@ -30,7 +30,9 @@ export class AuthService {
   _verifyAuthentication() {
     this.authenticationService.getAuthentication()
       .subscribe((data: AuthenticationResponseDTO) => {
-        this._setUserInfoAndRedirect(data.schema);
+        if (data.success) {
+          this._setUserInfoAndRedirect(data.schema);
+        }
       }, (err: HttpErrorResponse) => {
         if (err.status === HttpConstants.notAuthorized && err.error.resultCode === Constants.TOKEN_NOT_FOUND_CODE_ERR) {
           this.appService.navigateToPage('login');
@@ -45,9 +47,15 @@ export class AuthService {
       username,
       password
     }).subscribe((res: AuthenticationResponseDTO) => {
-      this._setUserInfoAndRedirect(res.schema);
-    }, (err: any) => {
-      const dialogRef = this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: 'Utente non trovato'}});
+      if (res.success) {
+        this._setUserInfoAndRedirect(res.schema);
+      } else {
+        this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: res.message}});
+        return;
+      }
+
+    }, (err: HttpErrorResponse) => {
+        this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: 'Errore Server'}});
     })
   }
 

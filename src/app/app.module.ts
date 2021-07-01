@@ -23,6 +23,7 @@ import {MatInputModule} from '@angular/material/input';
 import {HomeComponent} from './components/home/home.component';
 import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { LogoutDefaultPageComponent } from './components/logout-default-page/logout-default-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     DialogComponent,
     LoginComponent,
     HomeComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    LogoutDefaultPageComponent
   ],
   imports: [
     BrowserModule,

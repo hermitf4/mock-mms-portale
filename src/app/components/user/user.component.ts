@@ -30,9 +30,9 @@ export class UserComponent {
     this.userLoaded = false;
     this.users = [];
     this.usersService.getUsers()
-      .pipe(finalize(() => this.userLoaded = true))
       .subscribe( users => {
         this.users = users ? users : [];
+        this.userLoaded = true
       });
   }
 

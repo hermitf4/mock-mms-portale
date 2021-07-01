@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -17,7 +17,8 @@ import {AppService} from '../services/app.service';
 @Injectable()
 export class HttpInterInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService, public dialog: MatDialog, private appService: AppService, private authService: AuthService) {}
+  constructor(private auth: AuthService, public dialog: MatDialog, private appService: AppService, private authService: AuthService) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(this._addTokenToRequest(request, this.auth.getToken())).pipe(
@@ -51,9 +52,8 @@ export class HttpInterInterceptor implements HttpInterceptor {
 
   _handleTokenExpired(resp: HttpErrorResponse) {
     this.appService.cleanLS();
-    const dialogRef = this.dialog.open(DialogComponent, {width: '26.5rem', data: {message: 'Token non valido'}});
-
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialog.open(DialogComponent, {width: '26.5rem', data: { message: 'Token non valido'}})
+      .afterClosed().subscribe(_ => {
       this.authService.checkAuth();
     });
 

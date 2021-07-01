@@ -6,12 +6,14 @@ import {UserComponent} from './components/user/user.component';
 import {AccessDeniedComponent} from './components/access-denied/access-denied.component';
 import {AuthGuard} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
+import {LogoutDefaultPageComponent} from './components/logout-default-page/logout-default-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/users', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'users', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'access-denied', component: AccessDeniedComponent},
+  {path: 'default-logout', component: LogoutDefaultPageComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

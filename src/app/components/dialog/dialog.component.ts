@@ -7,14 +7,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./dialog.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DialogComponent implements OnInit {
+export class DialogComponent {
 
   message = '';
+  title = 'Attenzione!';
 
   constructor( public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  ngOnInit(): void {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     this.message = this.data.message;
   }
 

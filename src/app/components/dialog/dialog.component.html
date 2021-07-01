@@ -1,8 +1,13 @@
-<h2 mat-dialog-title>Error</h2>
-<div mat-dialog-content class="mat-typography">
+<div class="row">
+  <div class="col-12">
+    <h2 mat-dialog-title>{{title}}</h2>
+  </div>
+</div>
+<div mat-dialog-content class="row mat-typography">
   {{message}}
 </div>
 <div mat-dialog-actions align="end">
   <button  mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
 </div>
+
 
