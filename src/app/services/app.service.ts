@@ -20,8 +20,8 @@ export class AppService {
   }
 
   federaLoginRedirect() {
-    const urlToRedirect = //window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGIN_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
+    const urlToRedirect = environment.base_url_federa + Constants.FEDERA_LOGIN_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
+    alert('Login Federa -->' + urlToRedirect);
     window.location.href = urlToRedirect;
   }
 
@@ -36,8 +36,8 @@ export class AppService {
   }
 
   federaLogoutRedirect() {
-    const urlToRedirect = // window.location.origin
-      Constants.BASE_URL_FEDERA + Constants.FEDERA_LOGOUT_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
+    const urlToRedirect = environment.base_url_federa + Constants.FEDERA_LOGOUT_URL + '?' + Constants.FEDERA_PARAM + environment.idApp;
+    alert('Logout Federa -->' + urlToRedirect);
     window.location.href = urlToRedirect;
   }
 

@@ -104,7 +104,7 @@ export class AuthService {
       this.appService.isLoggedChanged.next({isLogged:false, user: {}});
       switch (resp.resultCode) {
         case Constants.CODE_LOGOUT_LDAP:
-          this.appService.navigateToPage('login');
+          this.checkAuth();
           break;
         case Constants.CODE_LOGOUT_FEDERA:
           this.appService.externalLogoutRedirect();

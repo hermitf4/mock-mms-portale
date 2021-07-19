@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  idApp: '',
-  base_url_federa: ''
+  idApp: 'angular',
+  base_url_federa: 'https://localhost:8443'
 };
 
 /*
